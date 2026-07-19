@@ -1,0 +1,159 @@
+{
+  "theme": "dark",
+  "archetype": "LUXURY",
+  "typography": {
+    "headings": {
+      "font": "Cormorant Garamond",
+      "weights": ["300", "400", "600"],
+      "class": "font-serif tracking-tight text-[#D4AF37]",
+      "notes": "Use for H1, H2, H3. Ensure tight letter spacing."
+    },
+    "body": {
+      "font": "Manrope",
+      "weights": ["300", "400"],
+      "class": "font-sans text-[#F5F5F0] leading-relaxed",
+      "notes": "Use for paragraphs, bios, and descriptions."
+    },
+    "labels": {
+      "font": "Manrope",
+      "class": "font-sans uppercase tracking-[0.2em] text-xs text-[#C5A059]",
+      "notes": "Use for tags, overlines, and small metadata."
+    }
+  },
+  "colors": {
+    "background": {
+      "default": "#050505",
+      "surface": "#0f0f0f",
+      "overlay": "rgba(5, 5, 5, 0.85)"
+    },
+    "primary": {
+      "gold": "#D4AF37",
+      "gold_light": "#EED891",
+      "gold_dark": "#997A15"
+    },
+    "text": {
+      "primary": "#F5F5F0",
+      "secondary": "#A3A3A3",
+      "accent": "#D4AF37"
+    },
+    "borders": {
+      "subtle": "rgba(212, 175, 55, 0.15)",
+      "strong": "rgba(212, 175, 55, 0.5)"
+    }
+  },
+  "visual_enhancers": {
+    "surfaces": "Glassmorphism for the Age Gate overlay and sticky nav (backdrop-blur-xl bg-black/60 border-b border-[#D4AF37]/10). Deep solid dark for Bento cards.",
+    "textures": "Apply a subtle noise/grain texture overlay to the entire page to kill 'digital flatness'.",
+    "shadows": "Use soft ambient black shadows. shadow-[0_8px_32px_rgba(0,0,0,0.8)] for depth."
+  },
+  "component_instructions": {
+    "age_gate": {
+      "type": "Modal/Overlay",
+      "style": "Full viewport fixed overlay (z-[100]). Deep black frosted glass (backdrop-blur-2xl bg-[#050505]/95). Centered elegant prompt. 'Enter' button should be solid gold (#D4AF37) with black text. 'Exit' ghost button.",
+      "test_id": "age-verification-gate"
+    },
+    "hero": {
+      "type": "Section",
+      "layout": "Min-h-screen. Full bleed background image. Overlay: bg-gradient-to-t from-[#050505] via-[#050505]/60 to-transparent. Left-aligned or Optical-centered typography. Huge H1 'Alexa Grey'.",
+      "test_id": "hero-section"
+    },
+    "quick_facts": {
+      "type": "Grid",
+      "layout": "Bento Grid Mode A (Asymmetrical). Use grid-cols-1 md:grid-cols-3. Border-collapse style or individual cards with 1px gold-tinted borders. Dark surface.",
+      "test_id": "quick-facts-grid"
+    },
+    "about_me": {
+      "type": "Section",
+      "layout": "Split layout. Left: Tall elegant portrait. Right: Confident, sensual bio text. Spacing: py-24 px-8.",
+      "test_id": "about-me-section"
+    },
+    "services_tags": {
+      "type": "List",
+      "layout": "Flex wrap, gap-3. Tags are pill-shaped: rounded-full border border-[#D4AF37]/30 text-[#EED891] bg-black/40 px-4 py-2 text-sm. Hover: bg-[#D4AF37]/10.",
+      "test_id": "services-tags-list"
+    },
+    "availability_rates": {
+      "type": "Tables/Bento",
+      "layout": "Two side-by-side bento cards. Clean un-cluttered rows. 1px border-b border-white/5 for separators. Prices right-aligned in gold.",
+      "test_id": "rates-table"
+    },
+    "media_gallery": {
+      "type": "Grid",
+      "layout": "Masonry or 3-column grid. Initially blurred: filter: blur(24px) scale(1.05). Overlay container with 'Reveal Media' button. When opted in, blur animates to 0.",
+      "test_id": "media-gallery"
+    },
+    "booking_form": {
+      "type": "Form",
+      "layout": "Minimalist inputs. bg-transparent, border-b border-white/20, focus:border-[#D4AF37] focus:outline-none. No heavy card wrappers. Submit button: Gold pill.",
+      "test_id": "booking-enquiry-form"
+    }
+  },
+  "layouts": {
+    "spacing": "Extremely generous. p-8, p-12, py-24. Use large negative spaces to evoke exclusivity.",
+    "alignment": "Avoid center-everything. Use optical left alignment for text to establish a sophisticated editorial feel.",
+    "grids": "Use the Tetris bento grid for stats. Avoid equal squares."
+  },
+  "motion": {
+    "hover": "Interactive elements should have a subtle gold glow or -translate-y-1. transition-transform duration-300 ease-out.",
+    "scroll": "Staggered fade-up for gallery and bento items as they enter viewport."
+  },
+  "accessibility": {
+    "contrast": "Ensure text against dark backgrounds passes APCA. Gold text on black is generally high contrast.",
+    "focus": "All form inputs must have a clear focus state (e.g., border-color change to gold)."
+  },
+  "media": {
+    "images": {
+      "hero_bg": {
+        "url": "https://images.unsplash.com/photo-1675726205553-4e348f24da2c",
+        "description": "Sensual brunette woman with a black shawl, dark moody lighting."
+      },
+      "about_photo": {
+        "url": "https://images.pexels.com/photos/20219558/pexels-photo-20219558.jpeg",
+        "description": "Stylish woman in black coat posing confidently outdoors during twilight."
+      },
+      "gallery_1": {
+        "url": "https://images.pexels.com/photos/7564686/pexels-photo-7564686.jpeg",
+        "description": "Alluring woman in black underwear in darkness."
+      },
+      "gallery_2": {
+        "url": "https://images.pexels.com/photos/31588661/pexels-photo-31588661.jpeg",
+        "description": "Stylish portrait of a woman wearing a wide-brimmed black hat."
+      },
+      "hotel_bg": {
+        "url": "https://images.pexels.com/photos/10343928/pexels-photo-10343928.jpeg",
+        "description": "Dark ambient hotel room."
+      },
+      "texture_bg": {
+        "url": "https://images.unsplash.com/photo-1531748049999-7217dc4cfbd1",
+        "description": "Gold glitter texture."
+      }
+    }
+  },
+  "3d_libraries": {
+    "recommendation": "framer-motion",
+    "usage": "Use Framer Motion for elegant, slow, sultry reveal animations, fade-ins, and the blur removal transition on the gallery. Do not use heavy 3D like Three.js to keep the site feeling like a fast, high-end editorial."
+  },
+  "instructions_to_main_agent": [
+    "You are writing .js files. Do not use TypeScript (.tsx).",
+    "Import Cormorant Garamond and Manrope fonts from Google Fonts in index.css.",
+    "Use raw HTML/Tailwind for the landing page structural sections to allow asymmetrical bento grids.",
+    "Use Shadcn only for the Form inputs, and heavily customize them to strip out the 'Vercel' look. Form inputs should look like elegant under-lined text fields.",
+    "For the blurred gallery, use CSS backdrop-filter or filter: blur() on the image container. Maintain a state variable `isOptedIn` (boolean) to toggle the class. Render a lock icon over the blurred content.",
+    "The Age Verification gate must block scrolling (overflow-hidden on body) and interaction until 'Enter' is clicked.",
+    "Never use pure white or pure black. Use #F5F5F0 for white text, and #050505 for background.",
+    "Include data-testid on all interactive elements. Example: data-testid='booking-submit-btn'."
+  ],
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": [
+    "Do not converge toward generic outputs. Use the deep luxury aesthetic.",
+    "Do not use dark colors as gradients. Use solid darks with subtle noise or vignette.",
+    "Do not center everything. Emphasize asymmetry and tension in layouts.",
+    "Create depth through layered design elements with z-index hierarchy.",
+    "Use glass-morphism effects with backdrop filters (backdrop-blur-xl).",
+    "Never apply universal transition (transition: all).",
+    "Never center align the app container (.App { text-align: center; }).",
+    "Every interaction needs micro-animations - hover states, transitions, entrance animations.",
+    "Use 2-3x more spacing than feels comfortable. Cramped designs look cheap.",
+    "No AI assistant Emoji characters (🤖🧠💭💡🔮🎯) for icons. Use lucide-react or phosphor-icons.",
+    "Prioritize using pre-existing components from src/components/ui when applicable."
+  ]
+}
