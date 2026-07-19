@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { MapPin, ArrowDown, BadgeCheck } from "lucide-react";
 import { MEDIA, PROFILE } from "../data";
@@ -6,11 +6,19 @@ import { MEDIA, PROFILE } from "../data";
 const scrollTo = (id) =>
   document.querySelector(id)?.scrollIntoView({ behavior: "smooth" });
 
+const CLIP_DURATION = 7000; // ms each clip stays before crossfading
+
 export default function Hero() {
   const videos = MEDIA.heroVideos;
   const [idx, setIdx] = useState(0);
 
-  const next = () => setIdx((i) => (i + 1) % videos.length);
+  useEffect(() => {
+    const t = setInterval(
+      () => setIdx((i) => (i + 1) % videos.length),
+      CLIP_DURATION
+    );
+    return () => clearInterval(t);
+  }, [videos.length]);
 
   return (
     <section
@@ -18,27 +26,37 @@ export default function Hero() {
       data-testid="hero-section"
       className="relative flex min-h-screen items-end overflow-hidden"
     >
-      {/* Background video (cycles through uploaded clips) */}
-      <div className="absolute inset-0">
-        <video
-          key={idx}
-          data-testid="hero-video"
-          src={videos[idx]}
-          poster={MEDIA.heroImage}
-          autoPlay
-          muted
-          playsInline
-          onEnded={next}
-          onError={next}
-          className="h-full w-full object-cover object-top"
-        />
+      {/* Crossfading background videos */}
+      <motion.div
+        className="absolute inset-0"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.6, ease: "easeOut" }}
+      >
+        {videos.map((src, i) => (
+          <video
+            key={i}
+            data-testid={`hero-video-${i}`}
+            src={src}
+            poster={MEDIA.heroImage}
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 h-full w-full object-cover object-top"
+            style={{
+              opacity: i === idx ? 1 : 0,
+              transition: "opacity 1600ms cubic-bezier(0.4, 0, 0.2, 1)",
+            }}
+          />
+        ))}
         <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/70 to-ink/20" />
         <div className="absolute inset-0 bg-gradient-to-r from-ink/85 via-transparent to-transparent" />
         <div
           className="absolute inset-0"
           style={{ boxShadow: "inset 0 0 240px 60px rgba(5,5,5,0.9)" }}
         />
-      </div>
+      </motion.div>
 
       {/* Clip indicator dots */}
       <div className="absolute right-6 top-1/2 z-10 hidden -translate-y-1/2 flex-col gap-2.5 md:flex">
@@ -48,7 +66,7 @@ export default function Hero() {
             aria-label={`Show clip ${i + 1}`}
             data-testid={`hero-clip-dot-${i}`}
             onClick={() => setIdx(i)}
-            className={`h-2 w-2 rounded-full transition-all duration-300 ${
+            className={`h-2 w-2 rounded-full transition-all duration-500 ${
               i === idx ? "scale-125 bg-gold" : "bg-cream/25 hover:bg-cream/50"
             }`}
           />
@@ -60,7 +78,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
           className="max-w-2xl"
         >
           <div className="mb-5 flex flex-wrap items-center gap-3">
