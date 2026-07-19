@@ -1,0 +1,12 @@
+# files to exclude from Vercel uploads/build context
+/.github
+/tests
+/docs
+/.env
+/.env.local
+/.env.*.local
+/venv
+/__pycache__
+*.pyc
+node_modules
+.DS_Store
