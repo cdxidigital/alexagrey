@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { MapPin, ArrowDown, BadgeCheck } from "lucide-react";
 import { MEDIA, PROFILE } from "../data";
@@ -7,17 +7,29 @@ const scrollTo = (id) =>
   document.querySelector(id)?.scrollIntoView({ behavior: "smooth" });
 
 export default function Hero() {
+  const videos = MEDIA.heroVideos;
+  const [idx, setIdx] = useState(0);
+
+  const next = () => setIdx((i) => (i + 1) % videos.length);
+
   return (
     <section
       id="top"
       data-testid="hero-section"
       className="relative flex min-h-screen items-end overflow-hidden"
     >
-      {/* Background */}
+      {/* Background video (cycles through uploaded clips) */}
       <div className="absolute inset-0">
-        <img
-          src={MEDIA.heroImage}
-          alt="Alexa Grey"
+        <video
+          key={idx}
+          data-testid="hero-video"
+          src={videos[idx]}
+          poster={MEDIA.heroImage}
+          autoPlay
+          muted
+          playsInline
+          onEnded={next}
+          onError={next}
           className="h-full w-full object-cover object-top"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/70 to-ink/20" />
@@ -26,6 +38,21 @@ export default function Hero() {
           className="absolute inset-0"
           style={{ boxShadow: "inset 0 0 240px 60px rgba(5,5,5,0.9)" }}
         />
+      </div>
+
+      {/* Clip indicator dots */}
+      <div className="absolute right-6 top-1/2 z-10 hidden -translate-y-1/2 flex-col gap-2.5 md:flex">
+        {videos.map((_, i) => (
+          <button
+            key={i}
+            aria-label={`Show clip ${i + 1}`}
+            data-testid={`hero-clip-dot-${i}`}
+            onClick={() => setIdx(i)}
+            className={`h-2 w-2 rounded-full transition-all duration-300 ${
+              i === idx ? "scale-125 bg-gold" : "bg-cream/25 hover:bg-cream/50"
+            }`}
+          />
+        ))}
       </div>
 
       {/* Content */}

@@ -4,6 +4,11 @@ const ASSET = "https://customer-assets-39nsmqrw.emergentagent.net/job_653f41f1-0
 export const MEDIA = {
   heroImage: `${ASSET}/guhnp41b_grok-image-e8810de0-2cd8-4167-a39f-54eb79f4c73d.jpg`,
   aboutImage: `${ASSET}/p469d5qq_grok-image-e26edb02-026d-423e-993c-c0d30b07c498.jpg`,
+  heroVideos: [
+    `${ASSET}/54jvvlxa_grok-video-ba6c2d27-17d8-499d-905c-b237d60b643f%20%282%29.mp4`,
+    `${ASSET}/1mnucoff_grok-video-de7b143b-3958-4e01-b272-fb3d1e59cbb3.mp4`,
+    `${ASSET}/2b26dd0f_grok-video-ba6c2d27-17d8-499d-905c-b237d60b643f%20%283%29.mp4`,
+  ],
   gallery: [
     { type: "image", src: `${ASSET}/guhnp41b_grok-image-e8810de0-2cd8-4167-a39f-54eb79f4c73d.jpg` },
     { type: "image", src: `${ASSET}/p469d5qq_grok-image-e26edb02-026d-423e-993c-c0d30b07c498.jpg` },
