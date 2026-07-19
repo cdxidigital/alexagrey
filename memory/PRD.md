@@ -40,6 +40,8 @@ services/preferences, availability schedule, rates + extras, and uploaded media
   Availability schedule, Rates + Extras cards, Booking enquiry form, Footer.
 - Booking backend (Mongo persistence) + optional Resend email (graceful skip).
 - Verified end-to-end by testing agent: backend 100%, frontend 100%, no bugs.
+- Hero upgraded to crossfading background video (all 3 uploaded clips, 1.6s dissolve, poster fallback, clip dots).
+- Repo cleaned for deployment (2026-07-19): removed dead Replit pnpm-workspace scaffolding (artifacts/, lib/, scripts/, pnpm-*, tsconfig*, .replit, old vercel.json); added README.md, frontend/vercel.json (CRA + SPA rewrites), Python/build .gitignore rules; switched FastAPI to lifespan handler.
 
 ## Pending / Needs user input
 - **Email notifications:** RESEND_API_KEY + OWNER_EMAIL not yet set in
