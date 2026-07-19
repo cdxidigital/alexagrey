@@ -1,6 +1,7 @@
 import os
 import asyncio
 import logging
+from contextlib import asynccontextmanager
 from datetime import datetime, timezone
 from typing import Annotated, List, Optional
 
@@ -26,7 +27,13 @@ OWNER_EMAIL = os.environ.get("OWNER_EMAIL", "").strip()
 client = AsyncIOMotorClient(MONGO_URL)
 db = client[DB_NAME]
 
-app = FastAPI(title="Alexa Grey API")
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    yield
+    client.close()
+
+
+app = FastAPI(title="Alexa Grey API", lifespan=lifespan)
 api = APIRouter(prefix="/api")
 
 
@@ -167,8 +174,3 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-
-@app.on_event("shutdown")
-async def shutdown():
-    client.close()

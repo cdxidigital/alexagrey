@@ -54,3 +54,17 @@ credentials.json
 *.pem
 *.key
 .credentials
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+.venv/
+venv/
+
+# Builds
+/build
+frontend/build/
+backend/dist/
+
