@@ -10,7 +10,7 @@
     "vercel-build": "next build"
   },
   "dependencies": {
-    "next": "14.3.0",
+    "next": "15.5.21",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
