@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "maxEdge": 1600,
+  "quality": 80,
+  "files": {
+    "hero.webp": {
+      "source": "assets/images/hero.webp",
+      "mtimeMs": 1790112992270,
+      "size": 75876,
+      "maxEdge": 1600,
+      "quality": 80
+    }
+  }
+}
