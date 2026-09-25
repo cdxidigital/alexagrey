@@ -23,8 +23,10 @@ export function BookingForm() {
 
   const set =
     (key: keyof typeof empty) =>
-    (e: { target: { value: string } }) =>
+    (e: { target: { value: string } }) => {
+      setError("");
       setForm((f) => ({ ...f, [key]: e.target.value }));
+    };
 
   const toggle = (name: string) => {
     setPicked((list) =>
@@ -105,6 +107,18 @@ export function BookingForm() {
               onSubmit={onSubmit}
               className="rounded-2xl border border-gold/15 bg-ink/40 p-7 md:p-10"
             >
+              <div className="mb-8 flex items-start justify-between gap-4 border-b border-gold/10 pb-6">
+                <div>
+                  <p className="label-text text-gold">Private enquiry</p>
+                  <p className="mt-2 text-sm font-light text-muted">
+                    Share the details that help me reply with availability.
+                  </p>
+                </div>
+                <span className="hidden rounded-full border border-gold/20 px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-muted sm:block">
+                  Confidential
+                </span>
+              </div>
+
               <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
                 <div>
                   <label className="field-label" htmlFor="booking-name">
@@ -114,6 +128,7 @@ export function BookingForm() {
                     id="booking-name"
                     data-testid="booking-name"
                     className="field-input"
+                    required
                     value={form.name}
                     onChange={set("name")}
                     placeholder="How should I call you?"
@@ -128,6 +143,7 @@ export function BookingForm() {
                     id="booking-phone"
                     data-testid="booking-phone"
                     className="field-input"
+                    required
                     value={form.phone}
                     onChange={set("phone")}
                     placeholder="Best number to text"
@@ -143,6 +159,7 @@ export function BookingForm() {
                     data-testid="booking-email"
                     className="field-input"
                     type="email"
+                    required
                     value={form.email}
                     onChange={set("email")}
                     placeholder="you@email.com"
@@ -188,6 +205,7 @@ export function BookingForm() {
                     id="booking-location"
                     data-testid="booking-location"
                     className="field-input"
+                    required
                     value={form.location}
                     onChange={set("location")}
                     placeholder="Suburb or hotel"

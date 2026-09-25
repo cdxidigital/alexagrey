@@ -6,6 +6,7 @@ import {
   LoaderCircle,
   Mail,
   MapPin,
+  MessageCircle,
   Phone,
   Search,
 } from "lucide-react";
@@ -300,7 +301,21 @@ export function StudioInbox() {
                           }}
                         />
                       </label>
-                      <div className="mt-5 flex flex-wrap gap-2">
+                      <div className="mt-6 flex flex-wrap gap-2 border-t border-gold/10 pt-5">
+                        <a
+                          href={`mailto:${row.email}?subject=${encodeURIComponent(`Re: Enquiry from ${row.name}`)}&body=${encodeURIComponent(`Hi ${row.name},\n\nThanks for getting in touch.\n\n`)}`}
+                          onClick={() => void patch(row.id, { status: "contacted" })}
+                          className="btn-gold px-4 py-2 text-xs"
+                        >
+                          <Mail size={14} /> Reply by email
+                        </a>
+                        <a
+                          href={`sms:${row.phone}`}
+                          onClick={() => void patch(row.id, { status: "contacted" })}
+                          className="btn-ghost px-4 py-2 text-xs"
+                        >
+                          <MessageCircle size={14} /> Text
+                        </a>
                         <StatusBtn
                           busy={busyId === row.id}
                           onClick={() => patch(row.id, { status: "contacted" })}
