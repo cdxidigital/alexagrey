@@ -11,6 +11,7 @@ import { Availability } from "@/components/availability";
 import { Rates } from "@/components/rates";
 import { BookingForm } from "@/components/booking-form";
 import { SiteFooter } from "@/components/footer";
+import { AlexaChat } from "@/components/alexa-chat";
 
 export const Route = createFileRoute("/")({ component: Home });
 
@@ -58,6 +59,7 @@ function Home() {
       <Rates />
       <BookingForm />
       <SiteFooter />
+      <AlexaChat />
     </main>
   );
 }
